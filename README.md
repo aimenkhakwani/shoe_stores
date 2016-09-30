@@ -6,9 +6,25 @@
 
 ## Description
 
-This is a dynamic website that demonstrates a MySQL many-to-many relationship.
+This is a dynamic website that demonstrates a MySQL many-to-many relationship. It allows users to add stores and brands, and then add multiple brands to a store and vice-versa.
+<img src="/web/screenshot.png" alt="A screenshot of the web app">
+
+## Specifications
+
+* The program takes user input (name and address) and creates a new instance of the Store class
+
+* The program takes user input (name) and makes a new instance of the Brand class
+
+* The program is able to add multiple brands to a store
+
+* The program is able to add multiple stores to a brand
+
+* The program has all CRUD functionality for all stores
+
+* The program allows a user to read and delete all brands
 
 ## MySQL Commands
+
 * mysql.server start
 * mysql -uroot -proot
 * CREATE DATABASE shoes;
