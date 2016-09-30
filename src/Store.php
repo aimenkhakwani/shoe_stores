@@ -24,7 +24,7 @@
 
         function setAddress($new_address)
         {
-            $this->address = (string) $address;
+            $this->address = (string) $new_address;
         }
 
         function getAddress()
@@ -35,6 +35,20 @@
         function getId()
         {
             return $this->id;
+        }
+
+        function update($new_name, $new_address)
+        {
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stores SET address = '{$new_address}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+            $this->setAddress($new_address);
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE id = {$this->getId()};");
         }
 
         function save()
@@ -60,6 +74,19 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM stores;");
+        }
+
+        static function find($search_id)
+        {
+            $found_store = null;
+            $stores = Store::getAll();
+            foreach($stores as $store) {
+                $store_id = $store->getId();
+                if($store_id == $search_id) {
+                    $found_store = $store;
+                }
+            }
+            return $found_store;
         }
     }
 ?>

@@ -116,5 +116,84 @@
             //Assert
             $this->assertEquals([], $result);
         }
+
+        function test_find()
+        {
+            //Arrange
+            $name = "Shoes Galore";
+            $address = "9718 NE 8th Street";
+            $store = new Store($name, $address);
+            $store->save();
+
+            $name2 = "Shoes Galore";
+            $address2 = "9718 NE 8th Street";
+            $store2 = new Store($name2, $address2);
+            $store2->save();
+
+            //Act
+            $find_id = $store2->getId();
+            $result = Store::find($find_id);
+
+            //Assert
+            $this->assertEquals($store2, $result);
+        }
+
+        function test_updateName()
+        {
+            //Arrange
+            $name = "Shoes Galore";
+            $address = "9718 NE 8th Street";
+            $store = new Store($name, $address);
+            $store->save();
+
+            $new_name = "Shoes Only";
+            $new_address = "9718 NE 8th Ave";
+
+            //Act
+            $store->update($new_name, $new_address);
+            $result = $store->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
+
+        function test_updateAddress()
+        {
+            //Arrange
+            $name = "Shoes Galore";
+            $address = "9718 NE 8th Street";
+            $store = new Store($name, $address);
+            $store->save();
+
+            $new_name = "Shoes Only";
+            $new_address = "9718 NE 8th Ave";
+
+            //Act
+            $store->update($new_name, $new_address);
+            $result = $store->getAddress();
+
+            //Assert
+            $this->assertEquals($new_address, $result);
+        }
+
+        function test_delete()
+        {
+            //Arrange
+            $name = "Shoes Galore";
+            $address = "9718 NE 8th Street";
+            $store = new Store($name, $address);
+            $store->save();
+
+            $name2 = "Shoes Galore";
+            $address2 = "9718 NE 8th Street";
+            $store2 = new Store($name2, $address2);
+            $store2->save();
+
+            //Act
+            $result = $store->delete();
+
+            //Assert
+            $this->assertEquals([$store2], Store::getAll());
+        }
     }
 ?>
