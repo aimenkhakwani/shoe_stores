@@ -9,15 +9,18 @@
 This is a dynamic website that demonstrates a MySQL many-to-many relationship.
 
 ## MySQL Commands
-*  
-*  
-*  
-*
-*
-*
-*
-*
-* 
+* mysql.server start
+* mysql -uroot -proot
+* CREATE DATABASE shoes;
+* USE shoes;
+* CREATE TABLE stores (name VARCHAR (255), address VARCHAR (255), id   serial PRIMARY KEY);
+* DESCRIBE stores;
+* CREATE TABLE brands (name VARCHAR (255), id serial PRIMARY KEY);
+* DESCRIBE brands;
+* CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id INT, brand_id INT);
+* DESCRIBE stores_brands;
+* (start Apache) $ apachectl start
+* (Create shoes_test database on phpmyadmin)
 
 ## Setup/Installation Requirements
 
