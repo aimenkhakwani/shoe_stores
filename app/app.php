@@ -82,5 +82,24 @@
         return $app['twig']->render("brand.html.twig", array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
 
+    $app->get("/updateOrDelete/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        return $app['twig']->render("update.html.twig", array('store' => $store));
+    });
+
+    $app->patch("/updateStore/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $store->update($name, $address);
+        return $app['twig']->render("store.html.twig", array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+    });
+
+    $app->delete("/deleteStore/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app['twig']->render("stores.html.twig", array('stores' =>     Store::getAll()));
+    });
+
     return $app;
 ?>
