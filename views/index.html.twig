@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <title>Local Shoe Stores</title>
+</head>
+<body>
+    <div class="container">
+        <h1><a href="/">Local Shoe Stores Database</a></h1>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/allStores">Stores</a></li>
+            <li role="presentation"><a href="/allBrands">Brands</a></li>
+        </ul>
+        <h2>Welcome to you local shoe stores database!</h2>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <h3>All of our stores</h3>
+                {% if stores is not empty %}
+                <ul>
+                    {% for store in stores %}
+                        <li>{{ store.getName }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <h3>All of the brands we carry</h3>
+                {% if brands is not empty %}
+                <ul>
+                    {% for brand in brands %}
+                        <li>{{ brand.getName }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</body>
+</html>

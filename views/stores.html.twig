@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <title>Local Shoe Stores</title>
+</head>
+<body>
+    <div class="container">
+        <h1><a href="/">Local Shoe Stores Database</a></h1>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation" class="active"><a href="/allStores">Stores</a></li>
+            <li role="presentation"><a href="/allBrands">Brands</a></li>
+        </ul>
+        <h2>Stores</h2>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Add a new store now!</h3>
+                <form action="/addStore" method="post">
+                    <label for="name">What is the store name:</label>
+                    <input name="name" class="form-control" type="text" placeholder="Store Name" required>
+                    <br>
+                    <label for="address">What is the store's address:</label>
+                    <input name="address" class="form-control" type="text" placeholder="Store Address">
+                    <br>
+                    <button class="btn btn-defualt" type="submit">Add Store</button>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <h3>All Stores</h3>
+                {% if stores is not empty %}
+                <ul>
+                    {% for store in stores %}
+                        <li><a href="thisStore/{{ store.getId }}">{{ store.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+                <form action="/deleteStores" method="post">
+                    <br>
+                    <button class="btn btn-classic" type="submit">Delete All Stores</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
