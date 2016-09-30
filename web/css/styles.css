@@ -1,0 +1,41 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+h1 a {
+    color: #275d8b;
+    font-family: 'Prosto One', cursive;
+}
+h1 a:hover {
+    text-decoration: none;
+    color: #4c91cd;
+}
+.box {
+    padding: 15px;
+    min-height: 200px;
+    box-shadow: 3px 3px 6px #d9d9d9;
+    border: 6px solid #f2f2f2;
+    background-color: #f2f2f2;
+    text-align: center;
+
+}
+.box li {
+    list-style-type: none;
+    margin-right: 15%;
+    font-size: 16px;
+    padding: 5px;
+}
+.box h3 {
+    margin-bottom: 15px;
+}
+.container{
+    margin-top: 1%;
+}
+.header2 {
+    margin-top: 4%;
+}
+.nav, h2 {
+    margin-top: 2%;
+}
