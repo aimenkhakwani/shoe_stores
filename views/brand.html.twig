@@ -14,30 +14,29 @@
             <li role="presentation" class="active"><a href="/allStores">Stores</a></li>
             <li role="presentation"><a href="/allBrands">Brands</a></li>
         </ul>
-        <h2>{{store.getName}}</h2>
-        <h4>Address: {{store.getAddress}}</h4>
+        <h2>{{brand.getName}}</h2>
         <br>
         <div class="row">
             <div class="col-md-6">
-                <h3>Add a brand to {{store.getName}}</h3>
-                <form action="/addBrandToStore" method="post">
-                    <input name="store_id" type="hidden" value="{{ store.getId }}">
-                    <select class="form-control" name="brand_id" type="text">
-                        {% for brand in all_brands %}
-                            <option value="{{ brand.getId }}">{{ brand.getName }}</li>
+                <h3>Add a store to sell {{brand.getName}} shoes at:</h3>
+                <form action="/addStoreToBrand" method="post">
+                    <input name="brand_id" type="hidden" value="{{ brand.getId }}">
+                    <select class="form-control" name="store_id" type="text">
+                        {% for store in all_stores %}
+                            <option value="{{ store.getId }}">{{ store.getName }}</li>
                         {% endfor %}
                     </select>
                     <br>
-                    <button class="btn btn-defualt" type="submit">Add Brand</button>
+                    <button class="btn btn-defualt" type="submit">Add Store</button>
                 </form>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4">
-                <h3>All brands that {{store.getName}} carries:</h3>
-                {% if brands is not empty %}
+                <h3>All stores that {{brand.getName}} shoes are sold at:</h3>
+                {% if stores is not empty %}
                 <ul>
-                    {% for brand in brands %}
-                        <li><a href="/thisBrand/{{brand.getId}}">{{ brand.getName }}</a></li>
+                    {% for store in stores %}
+                        <li><a href="/thisStore/{{store.getId}}">{{ store.getName }}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}

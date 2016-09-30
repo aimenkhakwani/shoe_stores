@@ -35,7 +35,7 @@
                 {% if stores is not empty %}
                 <ul>
                     {% for store in stores %}
-                        <li><a href="thisStore/{{ store.getId }}">{{ store.getName }}</a></li>
+                        <li><a href="/thisStore/{{ store.getId }}">{{ store.getName }}</a></li>
                     {% endfor %}
                 </ul>
                 <form action="/deleteStores" method="post">

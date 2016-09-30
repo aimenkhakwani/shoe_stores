@@ -32,7 +32,7 @@
                 {% if brands is not empty %}
                 <ul>
                     {% for brand in brands %}
-                        <li>{{ brand.getName }}</li>
+                        <li><a href="/thisBrand/{{ brand.getId }}">{{ brand.getName }}</a></li>
                     {% endfor %}
                 </ul>
                 <form action="/deleteBrands" method="post">
